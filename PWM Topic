@@ -1,0 +1,34 @@
+#Pulse Width Modulation
+# 1. Duty Cycle
+# 2. Frequency
+
+from machine import Pin
+import time
+B = Pin(5,Pin.OUT)
+while True :
+    B.on()
+    time.sleep(0.75)
+    B.off
+    time.sleep(0.25)    
+
+# USing PWM
+
+# 100% Duty Cycle
+from machine import Pin,PWM
+B = PWM(5)
+B.freq(1)
+B.duty(1023)
+
+# 50% Duty Cycle
+from machine import Pin,PWM
+B = PWM(5)
+B.freq(1)
+B.duty(512)
+
+# 75% Duty Cycle
+from machine import Pin,PWM
+B = PWM(5)
+B.freq(1)
+B.duty(768)
+
+#Brightness of the LED is proportional to the Duty Cycle.
