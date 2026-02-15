@@ -1,0 +1,71 @@
+#Getting the Module
+from machine import Pin
+#Telling the conrtoller which Pin
+B = Pin(2, Pin.OUT) #OUT- to get ouput, 2 is for locations in terms of esp32
+#Switch it on
+B.on()
+#To switch it off
+from machine import Pin
+A = Pin(2, Pin.OUT)
+A.off()
+
+#Adding time (for how long it should sleep) and then off
+from machine import Pin
+import time
+S = Pin(2, Pin.OUT)
+S.on()
+time.sleep(1)
+S.off
+
+#copy code to blink n no. of times, here n=3, first turn on, then sleep, then off, then sleep, then on and repeat
+from machine import Pin
+import time
+Z = Pin(2,Pin.OUT)
+Z.on()
+time.sleep(1)
+Z.off()
+time.sleep(1)
+Z.on()
+time.sleep(1)
+Z.off()
+time.sleep(1)
+Z.on()
+time.sleep(1)
+Z.off()
+
+#While loop
+from machine import Pin
+import time
+B = Pin(2,Pin.OUT)
+C = 3
+while C > 0 :
+    B.on()
+    time.sleep(1)
+    B.off
+    time.sleep(1)
+    C = C - 1
+
+#Multiple (4) LEDs at a time, continuously
+from machine import Pin
+import time
+Y = Pin(12,Pin.OUT)
+R = Pin(2,Pin.OUT)
+B = Pin(4,Pin.OUT)
+G = Pin(5,Pin.OUT)
+while True:
+    Y.on()
+    time.sleep(1)
+    Y.off()
+    time.sleep(1)
+    R.on()
+    time.sleep(1)
+    R.off()
+    time.sleep(1)
+    B.on()
+    time.sleep(1)
+    B.off()
+    time.sleep(1)
+    G.on()
+    time.sleep(1)
+    G.off()
+    
