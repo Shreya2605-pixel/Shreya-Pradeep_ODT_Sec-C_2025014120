@@ -1,0 +1,152 @@
+#Make LEDs glow (individually) with time
+from machine import Pin
+import time
+A = Pin(15,Pin.OUT)
+B = Pin(4,Pin.OUT)
+A.on()
+time.sleep(1)
+A.off()
+time.sleep(1)
+B.on()
+time.sleep(1)
+B.off()
+
+#Capacitive Touch
+# Note :Do not use pin no. 2 for this application as it is internally connected to the LED
+from machine import Pin, TouchPad
+import time
+T = TouchPad(Pin(12))
+A = Pin(4,Pin.OUT)
+while True:
+    T_value = T.read()
+    print(T_value)
+    time.sleep(0.2)   
+
+#If Loops
+from machine import Pin, TouchPad
+import time
+T = TouchPad(Pin(12))
+A = Pin(4,Pin.OUT)
+while True:
+    T_value = T.read() #will read the value of the Pin
+    if T_value < 500: #when touched
+        print("Pin Touched")
+        A.on()
+        time.sleep(0.5) #will make it glow for 0.5 second
+    A.off() #once if loop is done
+    print("Not Touched") #will happen when if loop is over (or if loop is false)
+    time.sleep(0.2)
+
+#If Loop with else
+from machine import Pin, TouchPad
+import time
+T = TouchPad(Pin(12))
+A = Pin(4,Pin.OUT)
+while True:
+    T_value = T.read() #will read the value of the Pin
+    if T_value < 500: #when touched
+        print("Pin Touched")
+        A.on() #will stay on as long as if gets executed, does not need delay
+    else:
+        A.off() #when if loop is not executed
+        print("Not Touched")
+    print(T_value) #will always show the value of T_value
+    time.sleep(0.2)
+
+#Trying with a pattern
+from machine import Pin, TouchPad
+import time
+T = TouchPad(Pin(12))
+A = Pin(4,Pin.OUT)
+B = Pin(5,Pin.OUT)
+while True:
+    T_value = T.read()
+    if T_value < 500:
+        print("Pin Touched")
+        A.on()
+    else:
+        A.off()
+        B.on()
+        print("Not touched")
+        time.sleep(0.5)
+        B.off()
+    print(T_value)
+    time.sleep(0.2)
+  
+#Using a push button
+from machine import Pin
+import time
+A = Pin(4,Pin.IN,Pin.PULL_UP) #Pin.PULL_UP - ESP32 with 3.3V - becomes 1, then when button is pressed, 1 gets pulled to 0
+while True:
+    print(A.value())
+    time.sleep(0.2) #output will come as 1 and whenever the button is pressed, it becomes 0
+
+#Using If Loop with Push Button
+from machine import Pin
+import time
+A = A = Pin(4,Pin.IN,Pin.PULL_UP)
+while True:
+    print(A.value())
+    Z = A.value()
+    if Z == 0:
+        print("On")
+    else:
+        print("Off")
+    time.sleep(0.2)
+
+#Push button with output
+from machine import Pin
+import time
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+B = Pin(5,Pin.OUT)
+C = Pin(21,Pin.OUT)
+D = Pin(19,Pin.OUT)
+E = Pin(23,Pin.OUT)
+while True:
+    print(A.value())
+    Z = A.value()
+    if Z == 0:
+        B.on()
+        time.sleep(0.07)
+        C.on()
+        time.sleep(0.07)
+        D.on()
+        time.sleep(0.07)
+        E.on()
+    else:
+        B.off()
+        time.sleep(0.07)
+        C.off()
+        time.sleep(0.07)
+        D.off()
+        time.sleep(0.07)
+        E.off()
+    time.sleep(0.2)
+
+#2 push buttons and 2 leds
+from machine import Pin
+import time
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+B = Pin(15,Pin.IN,Pin.PULL_UP)
+Y = Pin(21,Pin.OUT)
+G = Pin(23,Pin.OUT)
+while True:
+    print(A.value())
+    print(B.value())
+    X = A.value()
+    Z = B.value()
+    if X == 0:
+        Y.on()
+        print("LED 1 ON")
+        time.sleep(0.4)
+    if Z == 0:
+        G.on()
+        print("LED 2 ON")
+        time.sleep(0.4)
+    else:
+        Y.off()
+        G.off()
+    time.sleep(0.2)
+
+
+        
