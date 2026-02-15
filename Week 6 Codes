@@ -1,0 +1,152 @@
+# 2 push buttons - when 1st one is pressed, print "only button 1 pressed". when the 2nd button is pressed, print "only button 2 pressed"
+from machine import Pin
+import time
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+B = Pin(15,Pin.IN,Pin.PULL_UP)
+while True:
+    if A.value() == 0 and B.value() == 0:
+        print("Both buttons pressed.")
+    elif A.value() == 0:
+        print("Only button 1 pressed.")
+    elif B.value() == 0:
+        print("Only button 2 pressed.")
+    time.sleep(0.2)
+
+# To print numbers from 1 to ... based on the no. of times a button is pressed, counter no. will increase
+from machine import Pin
+import time
+S = Pin(15,Pin.IN,Pin.PULL_UP)
+C = 0
+while True:
+    if S.value() == 0:
+        C = C+1
+        time.sleep(0.2)
+        print(C)
+
+# To print numbers from 1 to ... based on the no. of times 1st button is pressed, counter no. will increase, if 2nd button is pressed, counter no. will decrease
+from machine import Pin
+import time
+S = Pin(15,Pin.IN,Pin.PULL_UP)
+B = Pin(4,Pin.IN,Pin.PULL_UP)
+C = 0
+while True:
+    if S.value() == 0:
+        C = C+1
+        time.sleep(0.2)
+        print(C)
+    if B.value() == 0:
+        C = C-1
+        time.sleep(0.2)
+        print(C)
+                
+# To print numbers from 1 to ... based on the no. of times 1st button is pressed, counter no. will increase, if 2nd button is pressed, counter no. will decrease
+# And when both buttons are pressed, reset the counter
+from machine import Pin
+import time
+S = Pin(15,Pin.IN,Pin.PULL_UP)
+B = Pin(4,Pin.IN,Pin.PULL_UP)
+C = 0
+while True:
+    if S.value() == 0 and B.value() == 0:
+        C = 0
+        print(C)
+    elif S.value() == 0:
+        C = C+1
+        print(C)
+    elif  B.value() == 0:
+        C = C-1
+        print(C)
+    time.sleep(0.2)
+
+# As the button gets pressed, the counter increases
+# As the counter increases, the neopixels should light up one by one
+from machine import Pin
+import time
+import neopixel
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+neo = neopixel.NeoPixel(Pin(12),16)
+C = 0
+while True:
+    if A.value() == 0: #when button is pushed, value becomes 0
+        C = C+1 #counter increases as value becomes 0
+        neo[C]=(255,0,255) #neo[c]- neo[counter]
+        print(C)
+        time.sleep(0.2)
+        neo.write() #lights up the led
+        
+# As the button gets pressed, the counter increases
+# As the counter increases, the neopixels should light up one by one
+# As the second button is pressed, the counter decreases
+# As the counter decreases, the neopixels go off one by one
+from machine import Pin
+import time
+import neopixel
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+B = Pin(15,Pin.IN,Pin.PULL_UP)
+neo = neopixel.NeoPixel(Pin(12),16)
+C = 0
+while True:
+    if A.value() == 0: #when button is pushed, value becomes 0
+        C = C+1 #counter increases as value becomes 0
+        neo[C]=(255,0,255) #neo[c]- neo[counter]
+        print(C)
+        time.sleep(0.2)
+        neo.write() #lights up the led
+    if B.value() == 0:
+        C = C-1 
+        neo[C+1]=(0,0,0)
+        print(C)
+        time.sleep(0.2)
+        neo.write()
+               
+# Same code as above but randomly generating the colours of the leds
+from machine import Pin
+import time
+import neopixel
+import random
+A = Pin(4,Pin.IN,Pin.PULL_UP)
+B = Pin(15,Pin.IN,Pin.PULL_UP)
+neo = neopixel.NeoPixel(Pin(12),16)
+C = 0
+while True:
+    if A.value() == 0: 
+        C = C+1 
+        a = random.randint(0,256)
+        b = random.randint(0,256)
+        c = random.randint(0,256)
+        neo[C] = (a,b,c)
+        print(C)
+        time.sleep(0.2)
+        neo.write() 
+    if B.value() == 0:
+        C = C-1 
+        neo[C+1]=(0,0,0)
+        print(C)
+        time.sleep(0.2)
+        neo.write()
+        
+# Lists
+durva = ['pasta','garlic bread','water','corn','love for shreya'] # [0,1,2,3]
+print(durva) # Square bracket will also be printed when printing a whole list
+print(durva[3]) # Will print the word corn
+durva.append("idli") # Will add idli at the end of the list
+print(durva)
+for z in durva:
+    print (z)    # Will print each element one below the other
+for z in range(0,6):
+    print(durva[z])
+    
+# From the list, when a button is pressed, random leds start glowing
+from machine import Pin
+import time
+import random
+colours = [(255,0,0), (0,255,0), (0,0,255), (255,0,255), (0,255,255)] #create a list of 5 colours
+pb = Pin(4,Pin.IN,Pin.PULL_UP) #create an object for push button
+while True :
+    v = pb.value() #read value of push button
+    if v == 0: #if button pressed
+        a = random.randint(0,4) #generate a random numner
+        my_var = colours[a] #use the generated randdon number as index for the list of random selection
+        print (my_var) #print the selected items
+    time.sleep(0.2) #stabalize the system
+    
