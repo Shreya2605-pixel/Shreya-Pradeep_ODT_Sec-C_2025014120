@@ -1,0 +1,317 @@
+from machine import Pin
+import time
+import random # Module used to get a random number generated 
+r = random.randint(3,7) #generates a random number from 3 to 7, including 3 and 7
+print(r)
+
+from machine import Pin
+import time
+import random
+while True:
+    r = random.randint(3,7)
+    time.sleep(1)
+    print(r)
+
+from machine import Pin
+import time
+import neopixel # neopixel is a module
+neo = neopixel.NeoPixel(Pin(4),16) # The number of LEDs on the neopixel
+# name[index] = (R,G,B)
+#For red (255,0,0), for green (0,255,0), for blue (0,0,255)
+neo[1] = (255,0,0)
+neo[2] = (0,255,0)
+neo[3] = (0,0,255)
+# For other colours mix red, green and blue together
+neo.write() # Lights up the LEDs in the neopixel
+
+from machine import Pin
+import time
+import neopixel 
+neo = neopixel.NeoPixel(Pin(12),16) 
+# only from range 0 - 15
+neo[0] = (255,0,0)
+neo[1] = (0,255,0)
+neo[2] = (0,0,255)
+# For other colours mix red, green and blue together
+neo[3] = (0,255,255)
+neo[4] = (255,255,255)
+neo[5] = (255,255,0)
+neo[6] = (255,0,0)
+neo[7] = (0,255,0)
+neo[8] = (0,0,255)
+neo[9] = (0,255,255)
+neo[10] = (255,255,255)
+neo[11] = (255,255,0)
+neo[12] = (255,0,0)
+neo[13] = (0,255,0)
+neo[14] = (0,0,255)
+neo[15] = (0,255,255)
+# neo[(any number between 0 to 15)] = (0,0,0) ---> off, no colour
+neo.write()
+
+# To turn on all the LEDs on the neopixel one by one
+from machine import Pin
+import time
+import neopixel
+neo = neopixel.NeoPixel(Pin(12),16)
+neo[0] = (255,0,0)
+time.sleep(0.5)
+neo.write()
+neo[0] = (0,0,0)
+neo[1] = (0,255,0)
+time.sleep(0.5)
+neo.write()
+neo[1] = (0,0,0)
+neo[2] = (0,0,255)
+time.sleep(0.5)
+neo.write()
+neo[2] = (0,0,0)
+neo[3] = (0,255,255)
+time.sleep(0.5)
+neo.write()
+neo[3] = (0,0,0)
+neo[4] = (255,255,255)
+time.sleep(0.5)
+neo.write()
+neo[4] = (0,0,0)
+neo[5] = (255,255,0)
+time.sleep(0.5)
+neo.write()
+neo[5] = (0,0,0)
+neo[6] = (255,0,0)
+time.sleep(0.5)
+neo.write()
+neo[6] = (0,0,0)
+neo[7] = (0,255,0)
+time.sleep(0.5)
+neo.write()
+neo[7] = (0,0,0)
+neo[8] = (0,0,255)
+time.sleep(0.5)
+neo.write()
+neo[8] = (0,0,0)
+neo[9] = (0,255,255)
+time.sleep(0.5)
+neo.write()
+neo[9] = (0,0,0)
+neo[10] = (255,255,255)
+time.sleep(0.5)
+neo.write()
+neo[10] = (0,0,0)
+neo[11] = (255,255,0)
+time.sleep(0.5)
+neo.write()
+neo[11] = (0,0,0)
+neo[12] = (255,0,0)
+time.sleep(0.5)
+neo.write()
+neo[12] = (0,0,0)
+neo[13] = (0,255,0)
+time.sleep(0.5)
+neo.write()
+neo[13] = (0,0,0)
+neo[14] = (0,0,255)
+time.sleep(0.5)
+neo.write()
+neo[14] = (0,0,0)
+neo[15] = (0,255,255)
+time.sleep(0.5)
+neo.write()
+neo[15] = (0,0,0)
+
+# To turn on all the LEDs on the neopixel one by one, continuously
+from machine import Pin
+import time
+import neopixel
+neo = neopixel.NeoPixel(Pin(12),16)
+while True:
+    neo[0] = (255,0,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[0] = (0,0,0)
+    neo[1] = (0,255,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[1] = (0,0,0)
+    neo[2] = (0,0,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[2] = (0,0,0)
+    neo[3] = (0,255,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[3] = (0,0,0)
+    neo[4] = (255,255,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[4] = (0,0,0)
+    neo[5] = (255,255,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[5] = (0,0,0)
+    neo[6] = (255,0,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[6] = (0,0,0)
+    neo[7] = (0,255,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[7] = (0,0,0)
+    neo[8] = (0,0,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[8] = (0,0,0)
+    neo[9] = (0,255,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[9] = (0,0,0)
+    neo[10] = (255,255,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[10] = (0,0,0)
+    neo[11] = (255,255,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[11] = (0,0,0)
+    neo[12] = (255,0,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[12] = (0,0,0)
+    neo[13] = (0,255,0)
+    time.sleep(0.5)
+    neo.write()
+    neo[13] = (0,0,0)
+    neo[14] = (0,0,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[14] = (0,0,0)
+    neo[15] = (0,255,255)
+    time.sleep(0.5)
+    neo.write()
+    neo[15] = (0,0,0)
+
+# Using a for loop
+for i in range(10,100,10): # range(starting point, ending point (won't count the ending number), difference)
+    print(i)
+
+# Generating all 16 numbers for the neopixels
+for i in range(0,16):
+    print(i)
+
+# Lighting up the neopixel (1 colour, one by one) using for loop
+from machine import Pin
+import time
+import neopixel
+neo = neopixel.NeoPixel(Pin(12),16)
+for i in range(16):
+    neo[i] = (0,0,255)
+    time.sleep(0.3)
+    neo.write()
+    neo[i] = (0,0,0)
+
+# Lighting up all the neopixels in different colours, one by one, using for loop
+from machine import Pin
+import time
+import neopixel
+import random
+neo = neopixel.NeoPixel(Pin(12),16)
+for i in range(16):
+    a = random.randint(0,256)
+    b = random.randint(0,256)
+    c = random.randint(0,256)
+    neo[i] = (a,b,c)
+    time.sleep(0.3)
+    neo.write()
+    neo[i] = (0,0,0)
+
+# Lighting up all the neopixels in different colours, one by one, using for loop and while loop, continuously, without turning any off
+from machine import Pin
+import time
+import neopixel
+import random
+neo = neopixel.NeoPixel(Pin(12),16)
+while True:
+    for i in range(16):
+        a = random.randint(0,256)
+        b = random.randint(0,256)
+        c = random.randint(0,256)
+        neo[i] = (a,b,c)
+        time.sleep(0.3)
+        neo.write()
+        
+# Lighting up all the neopixels in different colours, one by one, using for loop and while loop, continuously, but also turning the previous ones off
+from machine import Pin
+import time
+import neopixel
+import random
+neo = neopixel.NeoPixel(Pin(4),16)
+while True:
+    for i in range(16):
+        a = random.randint(0,256)
+        b = random.randint(0,256)
+        c = random.randint(0,256)
+        neo[i] = (a,b,c)
+        time.sleep(0.3)
+        neo.write()
+        neo[i] = (0,0,0)
+
+# Using PWM
+from machine import Pin,PWM
+import time
+B = PWM(5)
+B.freq(800)
+while True:
+    for x in range(0,1023):
+        B.duty(x)
+        print(x)
+        time.sleep(0.01)
+        
+# IR Sensor
+from machine import Pin
+import time
+ir = Pin(15,Pin.IN,Pin.PULL_UP)
+while True :
+    v = ir.value()
+    print(v)
+    time.sleep(0.5)
+        
+# Using an output for IR
+from machine import Pin
+import time
+B = Pin(19,Pin.OUT)
+ir = Pin(15,Pin.IN,Pin.PULL_UP)
+while True :
+    v = ir.value()
+    print(v)
+    time.sleep(0.5)
+    if v == 0:
+        B.on()
+        time.sleep(0.5)
+        B.off()
+        
+# Project 1 (done in class, use 1 input and 1 or more outputs)
+from machine import Pin
+import time
+import neopixel
+import random
+B = Pin(27,Pin.OUT)
+ir = Pin(15,Pin.IN,Pin.PULL_UP)
+neo = neopixel.NeoPixel(Pin(4),16)
+while True :
+    v = ir.value()
+    time.sleep(0.5)
+    if v == 1:
+        for i in range(16):
+            a = random.randint(0,256)
+            b = random.randint(0,256)
+            c = random.randint(0,256)
+            neo[i] = (a,b,c)
+            time.sleep(0.003)
+            neo.write()
+            neo[i] = (0,0,0)
+    else :
+        B.on()
+        time.sleep(0.3)
+        B.off()
+    print(v)
+        
